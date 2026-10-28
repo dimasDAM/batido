@@ -9,14 +9,15 @@ public class batido {
     public static void main(String[] args) {
         int opcion; // INICIAMOS LA VARIABLE OPCION
 
+        mostrarMenu();
+        opcion = sc.nextInt();
+
         do {
-            mostrarMenu();
-            opcion = sc.nextInt();
 
             switch (opcion) {
-                // case 1:
-                // mirarNevera();
-                // break;
+                case 1:
+                    mostrarNevera();
+                    break;
                 case 2:
                     llenarNevera();
                     break;
@@ -47,7 +48,26 @@ public class batido {
         String ingrediente = sc.nextLine();
         lista.add(ingrediente);
         System.out.println("Añadiste: " + ingrediente);
+        System.out.println("Quieres añadir otro ingrediente más?");
+        String respuesta = sc.nextLine();
+        if (respuesta == "Y") {
+            llenarNevera();
+        } else {
+            System.out.println("Vuelvo al menu");
+            mostrarMenu();
+        }
 
+    }
+
+    public static void mostrarNevera() {
+        System.out.println(lista);
+        if (lista.isEmpty()) {                            //COMPROBAMOS QUE EL ARRAY TENGA ALGO
+            System.out.println("Nevera vacía");
+        } else {
+            for (int i = 0; i < lista.size(); i++) {      //RECORREMOS EL ARRAY UNO POR UNO IMPRIMIMOS
+                System.out.println(" " + (i + 1) + ". " + lista.get(i));
+            }
+        }
     }
 
 }
